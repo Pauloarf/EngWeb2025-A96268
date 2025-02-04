@@ -1,15 +1,24 @@
 # EngWeb2025-A96268
 
-## Identificação do Aluno
+## 📌 Identificação do Aluno  
 
-*Foto:* [TODO]
+<table>
+  <tr>
+    <td><img src="./Images/Profile.jpg" width="150"></td>
+    <td>
+      <strong>Nome:</strong> Paulo Alexandre Rodrigues Ferreira  
+      <br>
+      <strong>Número:</strong> A96268  
+    </td>
+  </tr>
+</table>  
 
-*Nome:* Paulo Alexandre Rodrigues Ferreira
+## 📂 Sobre o Repositório  
 
-*Número:* A96268
+Este repositório armazena todo o trabalho desenvolvido na unidade curricular de **Engenharia Web (EngWeb)**.  
 
-## Sobre o Repositório
-
-Este repositório vai ser utilizado para guardar e expor todo o trabalho realizado na cadeira de Engenharia Web (EngWeb).
-\
-Os trabalhos realizados em cada semana estão separados por pastas nomeadas como ```TPC1```,```TPC2```,```TPC3```, etc. Cada pasta tem um README.md com informação relacionada ao trabalho, desde um título e data de realização, até uma descrição detalhada do mesmo.
+- Os trabalhos práticos semanais (**TPCs**) estão organizados em pastas nomeadas como `TPC1`, `TPC2`, `TPC3`, etc.  
+- Cada pasta contém um **README.md**, que inclui:  
+  - 📅 **Título e data de realização**  
+  - 📝 **Descrição detalhada do trabalho realizado**  
+  - 📁 **Lista de Resultados**  
