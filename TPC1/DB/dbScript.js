@@ -10,14 +10,28 @@ const reparacoes = json.reparacoes;
 const viaturas = [];
 const intervencoes = [];
 
+const intervencoesSet = new Set(); // To track unique 'codigo' values
+const viaturasSet = new Set(); // To track unique 'modelo-marca' pairs
+
 reparacoes.forEach((entry) => {
-  if (entry.viatura) viaturas.push(entry.viatura);
-  if (entry.intervencoes) {
-    entry.intervencoes.forEach((intervencao) => {
-      intervencoes.push(intervencao);
-    });
-  };
+    if (entry.viatura) {
+        const key = `${entry.viatura.modelo}-${entry.viatura.marca}`;
+        if (!viaturasSet.has(key)) {
+            viaturasSet.add(key);
+            viaturas.push(entry.viatura);
+        }
+    }
+
+    if (entry.intervencoes) {
+        entry.intervencoes.forEach((intervencao) => {
+            if (!intervencoesSet.has(intervencao.codigo)) {
+                intervencoesSet.add(intervencao.codigo);
+                intervencoes.push(intervencao);
+            }
+        });
+    }
 });
+
 
 const writeObject = (path, data) => {
   try{

@@ -2,6 +2,8 @@ const http = require('http');
 const axios = require('axios');
 // Pq não posso enviar o ficheiro diretamente?
 // Algo a ver com static data... pq nao posso simplesmente usar o <img> tag?
+
+// Qual a diferença entre usar o global e o pnpmx? um mete id o outro nao
 const pic501 = require('fs').readFileSync('./Errors/501.jpg');
 const pic404 = require('fs').readFileSync('./Errors/404.jpg');
 const pic500 = require('fs').readFileSync('./Errors/500.jpg');
@@ -31,7 +33,7 @@ http.createServer((req, res) => {
                     res.write('<h1>Lista de Reparações</>');
                     res.write('<ul>');
                     reparacoes.forEach(reparacao => {
-                        res.write('<li><a href="/reparacao/' + reparacao.id + '">' + reparacao.nome + '</a></li>');
+                        res.write('<li><a href="/reparacoes/' + reparacao.nif + '">' + reparacao.nome + '</a></li>');
                     });
                     res.write('</ul>');
                     res.end();    
@@ -39,28 +41,31 @@ http.createServer((req, res) => {
                     res.writeHead(500, { 'Content-Type': 'image/jpeg' });
                     res.end(pic500);
                 });
-            } else if (req.url.match(/\/reparacao\/.+/)) {
-                var nome = req.url.split('/')[2];
-                axios.get('http://localhost:3000/reparacoes/' + nome).then((resp) => {
+            } else if (req.url.match(/\/reparacoes\/.+/)) {
+                var nif = req.url.split('/')[2];
+                axios.get('http://localhost:3000/reparacoes?nif=' + nif).then((resp) => {
                     var reparacao = resp.data;
+                    reparacao = reparacao[0];
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
                     res.write('<h1>Nome do cliente: ' + reparacao.nome + '</h1>');
                     res.write('<h1>nif do cliente: ' + reparacao.nif + '</h1>');
                     res.write('<p>Data da reparação: ' + reparacao.data + '</p>');
                     res.write('<p>Numero de intervenções: ' + reparacao.nr_intervencoes + '</p>');
+                    res.write('<p></p>');
+                    res.write('<p>Viatura: <a href="http://localhost:4000/viaturas/' + reparacao.viatura.matricula + '">info</a></p>');
                     res.end();    
                 }).catch((error) => {
                     res.writeHead(500, { 'Content-Type': 'image/jpeg' });
                     res.end(pic500);
                 });
             } else if (req.url === `/intervencoes`) {
-                axios.get('http://localhost:3000/intervencoes?_sort=id').then((resp) => {
+                axios.get('http://localhost:3000/intervencoes?_sort=codigo').then((resp) => {
                     var intervencoes = resp.data;
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
                     res.write('<h1>Lista de Intervenções</>');
                     res.write('<ul>');
                     intervencoes.forEach(intervencao => {
-                        res.write('<li><a href="/intervencao/' + intervencao.id + '">' + '#' + intervencao.id + ': ' + intervencao.nome + '</a></li>');
+                        res.write('<li><a href="/intervencoes/' + intervencao.codigo + '">' + '#' + intervencao.codigo + ': ' + intervencao.nome + '</a></li>');
                     });
                     res.write('</ul>');
                     res.end();    
@@ -68,10 +73,11 @@ http.createServer((req, res) => {
                     res.writeHead(500, { 'Content-Type': 'image/jpeg' });
                     res.end(pic500);
                 });
-            } else if (req.url.match(/\/intervencao\/.+/)) {
-                var id = req.url.split('/')[2];
-                axios.get('http://localhost:3000/intervencoes/' + id).then((resp) => {
+            } else if (req.url.match(/\/intervencoes\/.+/)) {
+                var codigo = req.url.split('/')[2];
+                axios.get('http://localhost:3000/intervencoes?codigo=' + codigo).then((resp) => {
                     var intervencao = resp.data;
+                    intervencao = intervencao[0];
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
                     res.write('<h1>Código: ' + intervencao.codigo + '</h1>');
                     res.write('<h1>Nome: ' + intervencao.nome + '</h1>');
@@ -83,12 +89,12 @@ http.createServer((req, res) => {
                 });
             } else if (req.url === `/viaturas`) {
                 axios.get('http://localhost:3000/viaturas?_sort=matricula').then((resp) =>{
-                    var intervencoes = resp.data;
+                    var viaturas = resp.data;
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
                     res.write('<h1>Lista de Viaturas</>');
                     res.write('<ul>');
-                    intervencoes.forEach(viatura => {
-                        res.write('<li><a href="/viatura/' + viatura.id + '">' + viatura.matricula + '</a></li>');
+                    viaturas.forEach(viatura => {
+                        res.write('<li><a href="/viaturas/' + viatura.matricula + '">' + viatura.matricula + '</a></li>');
                     });
                     res.write('</ul>');
                     res.end();    
@@ -96,10 +102,11 @@ http.createServer((req, res) => {
                     res.writeHead(500, { 'Content-Type': 'image/jpeg' });
                     res.end(pic500);
                 });
-            } else if (req.url.match(/\/viatura\/.+/)) {
-                var id = req.url.split('/')[2];
-                axios.get('http://localhost:3000/viaturas/' + id).then((resp) => {
+            } else if (req.url.match(/\/viaturas\/.+/)) {
+                var matricula = req.url.split('/')[2];
+                axios.get('http://localhost:3000/viaturas?matricula=' + matricula).then((resp) => {
                     var viatura = resp.data;
+                    viatura = viatura[0];
                     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
                     res.write('<h1>Marca: ' + viatura.marca + '</h1>');
                     res.write('<h1>Modelo: ' + viatura.modelo + '</h1>');
