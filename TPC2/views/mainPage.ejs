@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/w3.css">
+    <title>Escola de Música</title>
+</head>
+<body>
+    <!-- SideBar -->
+    <div class="w3-sidebar w3-animate-left w3-pale-green w3-border w3-bar-block" style="width:25%">
+        <h3 class="w3-bar-item w3-pale-green">Páginas Disponíveis</h3>
+        <% for (const page of pageList) { %>
+            <a href="<%= page.url %>" class="w3-bar-item w3-button w3-border-bottom"><%= page.name %></a>
+        <% } %>
+    </div>
+      
+    <div style="margin-left:25%">
+        <h1>Escola de Música</h1>
+        <p><b>About us: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien tortor, sagittis faucibus quam vestibulum, viverra mattis diam. 
+            Nam scelerisque sollicitudin felis ac viverra. Duis placerat enim metus, non rhoncus libero dapibus in. Quisque vel semper justo, quis cursus tellus. Vivamus
+            malesuada enim et enim placerat commodo. Nulla sed auctor felis, at ullamcorper ante. Nunc nulla nisi, imperdiet sit amet ornare non, lacinia a ipsum. Mauris
+            bibendum leo vitae imperdiet ullamcorper. Donec lacinia vehicula eros quis imperdiet. Nunc non tortor dictum, dictum est a, feugiat ante. Maecenas mattis odio
+            eros, eu consequat velit auctor vitae. Maecenas in purus scelerisque urna placerat placerat. </p>
+    
+        <footer>
+            <p>Author: <%= author %> </p>
+            <p>Time: <%= date %> </p>
+        </footer>
+    </div>
+</body>
+</html>

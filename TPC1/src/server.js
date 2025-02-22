@@ -1,9 +1,6 @@
 const http = require('http');
 const axios = require('axios');
-// Pq não posso enviar o ficheiro diretamente?
-// Algo a ver com static data... pq nao posso simplesmente usar o <img> tag?
 
-// Qual a diferença entre usar o global e o pnpmx? um mete id o outro nao
 const pic501 = require('fs').readFileSync('./Errors/501.jpg');
 const pic404 = require('fs').readFileSync('./Errors/404.jpg');
 const pic500 = require('fs').readFileSync('./Errors/500.jpg');

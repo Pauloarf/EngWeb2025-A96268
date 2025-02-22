@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/w3.css">
+    <title>Aluno</title>
+</head>
+<body>
+    <div style="margin-left: 10%; margin-top: 10%;">
+        <div class="w3-card-4 w3-pale-green" style="width:50%;max-width: 400px;">
+            <div class="w3-container w3-center">
+                <h2>Informação do Aluno</h2>
+                <img src="/profile.png" alt="Avatar" style="width:80%">
+                <h4><%= aluno.nome %></h4>
+                <p><b>Data de Nascimento: </b> <%= aluno.dataNasc %></p>
+                <p><b>Curso que frequenta: </b> <%= aluno.curso %></p>
+                <p><b>Ano do curso: </b> <%= aluno.anoCurso %></p>
+                <p><b>Instrumento: </b> <%= aluno.instrumento %></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

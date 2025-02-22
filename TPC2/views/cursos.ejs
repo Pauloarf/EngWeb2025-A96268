@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/w3.css">
+    <title>Cursos</title>
+</head>
+<body>
+    <header class="w3-container w3-pale-yellow">
+    <h1>Lista de Cursos</h1>
+    </header>
+    <table class=" w3-table w3-striped w3-hoverable">
+        <tr class = "w3-pale-green">
+            <th class="w3-border">ID</th>
+            <th class="w3-border">Designação</th>
+            <th class="w3-border">Duração</th>
+        </tr>
+        <% for (const curso of cursos) { %>
+            <tr>
+                <td class="w3-border"><a href="http://localhost:3001/cursos/<%= curso.id %>"><%= curso.id %></a></td>
+                <td class="w3-border"><%= curso.designacao %></td>
+                <td class="w3-border"><%= curso.duracao %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

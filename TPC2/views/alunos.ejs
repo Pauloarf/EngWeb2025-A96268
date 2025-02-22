@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/w3.css">
+    <title>Alunos</title>
+</head>
+<body>
+    <header class="w3-container w3-pale-yellow">
+    <h1>Lista de Alunos</h1>
+    </header>
+    <table class=" w3-table w3-striped w3-hoverable">
+        <tr class = "w3-pale-green">
+            <th class="w3-border">ID</th>
+            <th class="w3-border">Nome</th>
+            <th class="w3-border">Ano do Curso</th>
+            <th class="w3-border">Data de Nascimento</th>
+        </tr>
+        <% for (const aluno of alunos) { %>
+            <tr>
+                <td class="w3-border"><a href="http://localhost:3001/alunos/<%= aluno.id %>"><%= aluno.id %></a></td>
+                <td class="w3-border"><%= aluno.nome %></td>
+                <td class="w3-border"><%= aluno.anoCurso %></td>
+                <td class="w3-border"><%= aluno.dataNasc %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
