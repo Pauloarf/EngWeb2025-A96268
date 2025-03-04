@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../favicon.png"/>
+    <link rel="stylesheet" href="../w3.css"/>
+    <title>Treinos</title>
+</head>
+<body>
+    <div class="w3-sidebar w3-animate-left w3-pale-green w3-border w3-bar-block" style="width:25%">
+        <h3 class="w3-bar-item w3-pale-green">Páginas Disponíveis</h3>
+        <% for (const page of pageList) { %>
+            <a href="<%= page.url %>" class="w3-bar-item w3-button w3-border-bottom"><%= page.name %></a>
+        <% } %>
+    </div>
+
+    <div  style="margin-left:25%">
+        <header class="w3-container w3-pale-yellow">
+            <h1>Lista de Alunos
+            <a href="http://localhost:3001/treinos/register">
+                <button class="w3-button w3-large w3-circle w3-teal">+</button>
+            </a>
+            </h1>
+        </header>
+        <table class=" w3-table w3-striped w3-hoverable">
+        <tr class = "w3-pale-green">
+            <th class="w3-border">Nome</th>
+            <th class="w3-border">Desporto</th>
+            <th class="w3-border">Duração (mins)</th>
+            <th class="w3-border">Data (YYYY-MM-DD)</th>
+            <th class="w3-border">Ações</th>
+        </tr>
+        <% for (const treino of treinos) { %>
+            <tr>
+                <td class="w3-border"><a href="http://localhost:3001/treinos/<%= treino.id %>"><%= treino.nome %></a></td>
+                <td class="w3-border"><%= treino.desporto %></td>
+                <td class="w3-border"><%= treino.duracao %></td>
+                <td class="w3-border"><%= treino.data %></td>
+                <td class="w3-border">
+                    <a href="http://localhost:3001/treinos/edit/<%= treino.id %>" style="text-decoration: none;">
+                        <button class="w3-button w3-round w3-teal">Editar</button>
+                    </a>
+                    <a href="http://localhost:3001/treinos/delete/<%= treino.id %>" style="text-decoration: none;">
+                        <button class="w3-button w3-round w3-teal">Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
+</body>
+</html>

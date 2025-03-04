@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../favicon.png"/>
+    <link rel="stylesheet" href="../w3.css"/>
+    <title>Register</title>
+</head>
+<body>
+    <div class="w3-sidebar w3-animate-left w3-pale-green w3-border w3-bar-block" style="width:25%">
+        <h3 class="w3-bar-item w3-pale-green">Páginas Disponíveis</h3>
+        <% for (const page of pageList) { %>
+            <a href="<%= page.url %>" class="w3-bar-item w3-button w3-border-bottom"><%= page.name %></a>
+        <% } %>
+    </div>
+    <div style="margin-left:25%">
+        <header>
+            <h1 class="w3-card w3-teal w3-border">
+                Treinos Form
+            </h1>
+        </header>
+        <div class="w3-card-4 w3-light-grey">
+            <form class="w3-container" method="POST">
+            <label>Nome</label>
+            <input required class="w3-input w3-round" type="text" name="nome"/>
+            <label>Nif</label>
+            <input required class="w3-input w3-round" type="text" name="nif"/>
+            <label>Data</label>
+            <input required class="w3-input w3-round" type="text" name="data"/>
+            <label>Desporto</label>
+            <input required class="w3-input w3-round" type="text" name="desporto"/>
+            <label>Duração</labe w3-light-greyl>
+            <input required class="w3-input w3-round" type="text" name="duracao"/>
+            <br/>
+            <button class="w3-btn w3-teal w3-mb-2" type="submit">Register</button>
+            </form>
+        </div>
+    </div>    
+</body>
+</html>
