@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  .w3-container.w3-margin-top
+    .w3-card-4.w3-white
+      header.w3-container.w3-blue
+        h1 
+          i.fa.fa-file-text-o(style="margin-right:10px") 
+          | Contrato Nº #{contrato._id}
+      
+      .w3-container.w3-padding-16
+        .w3-row-padding
+          // Left column - Main info
+          .w3-half
+            .w3-panel.w3-light-grey.w3-border
+              h3 Informação Básica
+              p
+                strong Tipo de Procedimento: 
+                span.w3-tag.w3-blue-grey #{contrato.tipoprocedimento}
+              p
+                strong Objeto: 
+                br
+                span.w3-pale-yellow.w3-padding-small(style="display:inline-block;width:100%") 
+                  | #{contrato.objectoContrato}
+              p
+                strong Anúncio: 
+                | #{contrato.nAnuncio || 'N/A'}
+              
+          // Right column - Dates and values
+          .w3-half
+            .w3-panel.w3-light-grey.w3-border
+              h3 Datas e Valores
+              p
+                strong Publicação: 
+                | #{contrato.dataPublicacao}
+              p
+                strong Celebração: 
+                | #{contrato.dataCelebracao}
+              p
+                strong Preço: 
+                span.w3-badge.w3-green #{contrato.precoContratual} €
+              p
+                strong Prazo: 
+                | #{contrato.prazoExecucao} dias
+          
+        // Bottom section - Entity info
+        .w3-panel.w3-light-grey.w3-border
+          h3 Entidade Contratante
+          p
+            strong NIPC: 
+            | #{contrato.NIPC_entidade_comunicante}
+          p
+            strong Nome: 
+            | #{contrato.entidade_comunicante}
+          p
+            strong Fundamentação: 
+            br
+            em.w3-pale-yellow.w3-padding-small(style="display:inline-block;width:100%") 
+              | #{contrato.fundamentacao}
+      
+      footer.w3-container.w3-blue.w3-padding-16
+        a.w3-button.w3-white.w3-hover-pale-yellow(href="javascript:history.back()")
+          i.fa.fa-arrow-left(style="margin-right:8px")
+          | Voltar à página anterior

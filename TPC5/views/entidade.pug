@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  .w3-container.w3-margin-top
+    .w3-card-4
+      header.w3-container.w3-indigo
+        h1
+          i.fa.fa-building(style="margin-right:10px")
+          | Entidade: #{entidade}
+        h3 NIPC: #{nipc}
+      
+      .w3-container.w3-padding-16
+        h2.w3-text-indigo
+          i.fa.fa-file-text(style="margin-right:10px")
+          | Contratos desta Entidade
+        
+        // Contracts table
+        .w3-responsive
+          table.w3-table-all.w3-hoverable
+            tr.w3-indigo
+              th ID Contrato
+              th Objeto
+              th Data Celebração
+              th Valor (€)
+              th Prazo (dias)
+            each contrato in contratos
+              tr
+                td
+                  a(href=`/contratos/${contrato._id}`)= contrato._id
+                td= contrato.objectoContrato
+                td= contrato.dataCelebracaoContrato
+                td= contrato.precoContratual.toLocaleString('pt-PT')
+                td= contrato.prazoExecucao
+        
+        // Total value
+        .w3-panel.w3-light-grey.w3-border.w3-margin-top
+          h3
+            i.fa.fa-euro(style="margin-right:10px")
+            | Valor Total dos Contratos: 
+            strong.w3-text-indigo= totalContratos.toLocaleString('pt-PT') 
+            |  €
+      
+      footer.w3-container.w3-indigo.w3-padding-16
+        a.w3-button.w3-white.w3-hover-pale-yellow(href="/")
+          i.fa.fa-home(style="margin-right:8px")
+          | Voltar à Página Principal
