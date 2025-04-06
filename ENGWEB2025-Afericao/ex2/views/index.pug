@@ -1,0 +1,28 @@
+doctype html
+html(lang="pt")
+  head
+    title Página Principal - Lista de Livros
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  body
+    .container
+      h1 Lista de Livros
+
+      table
+        thead
+          tr
+            th ID
+            th Title
+            th Author
+            th Publish Date
+            th Pages
+        tbody
+          each book in books
+            tr
+              td
+                a(href=`/books/${book.bookId}`) #{book.bookId}  <!-- Link para a página do livro -->
+              td #{book.title}
+              td
+                a(href=`/authors/${book.author[0]}`) #{book.author[0]} <!-- Link para a página do autor -->
+              td #{book.publishDate}
+              td #{book.pages}

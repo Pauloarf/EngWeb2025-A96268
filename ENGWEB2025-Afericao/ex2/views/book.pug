@@ -1,0 +1,35 @@
+doctype html
+html(lang="pt")
+  head
+    title Detalhes do Livro
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  body
+    .container
+      h1 Detalhes do Livro
+
+      // Exibindo todos os campos do livro
+      p
+        strong Título:
+        span #{book.title}
+      p
+        strong Autor:
+        span #{book.author.join(', ')}  // Autor pode ser uma lista
+      p
+        strong Data de Publicação:
+        span #{book.publishDate}
+      p
+        strong Páginas:
+        span #{book.pages}
+      p
+        strong Descrição:
+        span #{book.description}
+
+      // Se existir imagem de capa, exibe
+      if book.coverImg
+        p
+          strong Imagem de Capa:
+          img(src=book.coverImg, alt="Capa do livro", width="200")
+
+      // Link para voltar à página principal
+      a(href="/") Voltar à Página Principal

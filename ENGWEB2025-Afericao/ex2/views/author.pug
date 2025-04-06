@@ -1,0 +1,35 @@
+doctype html
+html(lang="pt")
+  head
+    title Detalhes do Autor
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  body
+    .container
+      h1 Detalhes do Autor: #{name} (ID: #{idAutor})
+
+      // Tabela com livros do autor
+      h2 Lista de Livros
+      table
+        thead
+          tr
+            th ID
+            th Title
+            th Publish Date
+            th Pages
+        tbody
+          each book in books
+            tr
+              td
+                a(href=`/books/${book._id}`) #{book._id}  <!-- Link para a página do livro -->
+              td #{book.title}
+              td #{book.publishDate}
+              td #{book.pages}
+
+      // Exibe o somatório do número de livros
+      p
+        strong Total de livros: 
+        span #{totalBooks}
+
+      // Link para voltar à página principal
+      a(href="/") Voltar à Página Principal
